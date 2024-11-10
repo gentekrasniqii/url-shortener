@@ -1,0 +1,55 @@
+﻿@model List<url_shortener_app.Models.Link>
+@{
+    ViewData["Title"] = "URL Shortener";
+}
+
+<div class="row h-100 w-100">
+    <div class="col-md-3 bg-light p-4 flex text-center overflow-hidden">
+        <div class="img-holder">
+            <img src="~/images/AnchorzUp Logo.svg" alt="logo" class="w-75 h-100" />
+        </div>
+        <p class="fw-bold">My shortened URLs</p>
+        <ul>
+            @foreach (var link in Model)
+            {
+                <li>
+                    <a href="@link.ShortenedUrl" target="_blank">@link.ShortenedUrl</a>
+                    <form asp-action="DeleteUrl" method="post">
+                        <input type="hidden" name="id" value="@link.Id" />
+                        <button type="submit" class="btn p-0 border-0 bg-transparent">
+                            <svg class="w-12 h-12 text-gray-800 dark:text-white bin" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
+                            </svg>
+                        </button>
+                    </form>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <div class="col-md-9 mt-5 px-5">
+        <h2 class="mb-5">URL Shortener</h2>
+        <form asp-action="ShortenUrl" method="post">
+            <div class="row mb-5">
+                <div class="col-md-8">
+                    <input type="text" name="originalUrl" placeholder="Paste the URL to be shortened" class="form-control" required />
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" name="expirationTime" aria-label="Add expiration date" required>
+                        <option selected>Add expiration date</option>
+                        <option value="1">1 minute</option>
+                        <option value="5">5 minutes</option>
+                        <option value="30">30 minutes</option>
+                        <option value="60">1 hour</option>
+                        <option value="300">5 hours</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn px-4 py-2 clr">
+                Shorten URL
+            </button>
+        </form>
+    </div>
+</div>
+
+

@@ -1,0 +1,45 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+}
+
+    ul li {
+        display: flex;
+        justify-content: space-around;
+    }
+
+a {
+    color: cornflowerblue;
+}
+
+.clr {
+    background-color: rebeccapurple;
+    color: #ffffff;
+}
+
+    .clr:hover {
+        color: #ffffff;
+    }
+
+.img-holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.bin {
+    cursor: pointer;
+    border-radius: 40px;
+    padding: 5px;
+}
+
+    .bin:hover {
+        background-color: #ff9797;
+    }
